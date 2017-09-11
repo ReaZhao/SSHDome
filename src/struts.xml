@@ -7,7 +7,7 @@
 	    <action name="home" class="homeAction" method="login">
 	        <result name="input">/WEB-INF/jsp/login/login.jsp</result>
 			<!-- dispatcher 重定向 -->
-			<result name="success" type="dispatcher">/WEB-INF/frame.jsp</result>
+			<result name="success" type="dispatcher">/frame/frame.jsp</result>
 	    </action>
 		<action name="emp.*" class="employeeAction" method="{1}">
 			<result name="findAll">/WEB-INF/jsp/employee/listEmployee.jsp</result>
