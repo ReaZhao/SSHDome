@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <!-- 修改Struts2 的后缀 -->
+    <constant name="struts.action.extension" value="com"></constant>
+	<package name="ssh" namespace="/" extends="struts-default">
+	    <action name="home" class="homeAction" method="login">
+	        <result name="input">/WEB-INF/jsp/login/login.jsp</result>
+			<!-- dispatcher 重定向 -->
+			<result name="success" type="dispatcher">/WEB-INF/frame.jsp</result>
+	    </action>
+		<action name="emp.*" class="employeeAction" method="{1}">
+			<result name="findAll">/WEB-INF/jsp/employee/listEmployee.jsp</result>
+			<result name="saveInfo">/WEB-INF/jsp/employee/addEmployee.jsp</result>
+			<result name="saveSuccess" type="redirect">emp.findAll.com</result>
+				<result name="findByDid" type="redirect">/WEB-INF/jsp/employee/editEmployee.jsp</result>
+			<result name="updateSuccess" type="redirect">emp.findAll.com</result>
+			<result name="deleteSuccess" type="redirect">emp.findAll.com</result>
+			<!-- Struts2.5 通配符只需要加上 <allowed-methods>Action的方法名</allowed-methods> 这一句就可以了。  -->
+			  <allowed-methods>findAll,saveInfo,saveSuccess,findByDid,updateSuccess,deleteSuccess</allowed-methods>
+		</action>
+		<action name="dep.*" class="departmentAction" method="{1}">
+			<result name="findAll">/WEB-INF/jsp/department/listDep.jsp</result>
+			<result name="saveInfo">/WEB-INF/jsp/department/addDepartment.jsp</result>
+			<result name="saveSuccess" type="redirect">dep.findAll.com</result>
+			<result name="findByDid">/WEB-INF/jsp/department/updateDepartment.jsp</result>
+			<result name="updateSuccess" type="redirect">dep.findAll.com</result>
+			<result name="deleteSuccess" type="redirect">dep.findAll.com</result>
+			  <allowed-methods>findAll,saveInfo,saveSuccess,findByDid,updateSuccess,deleteSuccess</allowed-methods>
+		</action>
+	</package>
+</struts>    
